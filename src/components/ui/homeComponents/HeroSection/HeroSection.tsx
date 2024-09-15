@@ -1,25 +1,25 @@
 import Container from "@/components/sheard/Container/container";
-import { carouselImages, images } from "@/lib";
+import { images } from "@/lib";
 import React from "react";
 
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-import Image from "next/image";
+// import "slick-carousel/slick/slick.css";
+// import "slick-carousel/slick/slick-theme.css";
+// import Image from "next/image";
 
 
 const HeroSection: React.FC = () => {
   // Settings for the slider
-  const settings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    autoplay: true,
-    autoplaySpeed: 3000,
-    fade: true,
-    cssEase: "linear",
-  };
+  // const settings = {
+  //   dots: true,
+  //   infinite: true,
+  //   speed: 500,
+  //   slidesToShow: 1,
+  //   slidesToScroll: 1,
+  //   autoplay: true,
+  //   autoplaySpeed: 3000,
+  //   fade: true,
+  //   cssEase: "linear",
+  // };
 
   return (
     <div
@@ -42,7 +42,7 @@ const HeroSection: React.FC = () => {
             </div>
             <div>
               {/* Dynamic Carousel */}
-              <Slider {...settings}>
+              {/* <Slider {...settings}>
                 {carouselImages.map((image, index) => (
                   <div
                     key={index}
@@ -57,7 +57,7 @@ const HeroSection: React.FC = () => {
                     />
                   </div>
                 ))}
-              </Slider>
+              </Slider> */}
             </div>
           </div>
         </div>
