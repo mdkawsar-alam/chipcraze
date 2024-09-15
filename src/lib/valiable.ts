@@ -391,3 +391,68 @@ export const products: Product[] = [
     description: "Fast wireless charger with sleek design.",
   },
 ];
+interface Offer {
+  id: number;
+  title: string;
+  description: string;
+  imageUrl: string;
+  discount: number;
+  link: string;
+}
+
+export const specialOffers: Offer[] = [
+  {
+    id: 1,
+    title: "50% Off on Laptops",
+    description: "Top brand laptops at half price!",
+    imageUrl: "/images/laptop-offer.jpg", // Replace with actual image paths
+    discount: 50,
+    link: "/shop/laptops",
+  },
+  {
+    id: 2,
+    title: "25% Off on Mobile Phones",
+    description: "Latest smartphones at incredible discounts!",
+    imageUrl: "/images/mobile-offer.jpg",
+    discount: 25,
+    link: "/shop/mobiles",
+  },
+  {
+    id: 3,
+    title: "Buy 1 Get 1 Free - Headphones",
+    description: "Best sound experience with our premium headphones.",
+    imageUrl: "/images/headphones-offer.jpg",
+    discount: 100,
+    link: "/shop/headphones",
+  },
+];
+interface Testimonial {
+  name: string;
+  review: string;
+  image?: string; // Optional image of the customer
+  rating?: number; // Optional rating from 1 to 5
+}
+
+  export const testimonials: Testimonial[] = [
+  {
+    name: "John Doe",
+    review:
+      "ChipCraze has the best deals on tech products. I’ve saved so much and the customer service is fantastic!",
+    image: "/images/john.jpg", // Replace with the actual image path
+    rating: 5,
+  },
+  {
+    name: "Jane Smith",
+    review:
+      "I love how fast and reliable ChipCraze is. Highly recommended for all tech lovers!",
+    image: "/images/jane.jpg",
+    rating: 4,
+  },
+  {
+    name: "Michael Lee",
+    review:
+      "Great variety of products and excellent customer support. I’ll definitely shop here again!",
+    image: "/images/michael.jpg",
+    rating: 5,
+  },
+];
