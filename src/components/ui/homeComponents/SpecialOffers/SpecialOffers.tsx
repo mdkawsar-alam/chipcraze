@@ -1,4 +1,4 @@
-import { specialOffers } from "@/lib/valiable";
+import { specialOffers } from "@/lib/variable";
 import Image from "next/image";
 import Link from "next/link";
 

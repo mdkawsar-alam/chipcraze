@@ -1,20 +1,27 @@
 import React from "react";
 import Image from "next/image";
-import { products } from "@/lib/valiable";
+import { products } from "@/lib/variable";
 import { images } from "@/lib";
 
-
 interface ProductSectionProps {
-  selectedCategory: string | null; // Add this prop to filter products
+  selectedCategory: string | null;
+  selectedSubCategory: string | null; // Added prop for subcategory
 }
 
 const ProductSection: React.FC<ProductSectionProps> = ({
   selectedCategory,
+  selectedSubCategory,
 }) => {
-  // Filter products based on selected category
-  const filteredProducts = selectedCategory
-    ? products.filter((product) => product.subCategory === selectedCategory)
-    : products;
+  // Filter products based on selected category and subcategory
+  const filteredProducts = products.filter((product) => {
+    const matchesCategory = selectedCategory
+      ? product.category === selectedCategory
+      : true;
+    const matchesSubCategory = selectedSubCategory
+      ? product.subCategory === selectedSubCategory
+      : true;
+    return matchesCategory && matchesSubCategory;
+  });
 
   return (
     <div className="bg-white p-8">
@@ -23,14 +30,14 @@ const ProductSection: React.FC<ProductSectionProps> = ({
         {filteredProducts.map((product) => (
           <div key={product.id} className="border p-4 rounded-lg shadow-md">
             <Image
-              src={images.product19} // Assuming each product has an image property
+              src={images.product19}
               alt={product.name}
               width={500}
               height={300}
               className="w-full h-48 object-cover mb-4 rounded-md"
             />
             <h3 className="text-xl font-semibold">{product.name}</h3>
-            <p className="text-lg text-gray-700">{product.price}</p>
+            <p className="text-lg text-gray-700">${product.price.toFixed(2)}</p>
           </div>
         ))}
       </div>

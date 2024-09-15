@@ -1,6 +1,6 @@
 "use client";
 
-import { navItems } from "@/lib/valiable";
+import { navItems } from "@/lib/variable";
 import Link from "next/link";
 import { useState, useEffect, useRef } from "react";
 import { FaSearch, FaShoppingCart } from "react-icons/fa";

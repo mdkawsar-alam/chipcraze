@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import { FaSearch, FaShoppingCart } from "react-icons/fa";
-import { navItems } from "@/lib/valiable";
+import { navItems } from "@/lib/variable";
 
 
 const DesktopNav: React.FC = () => {

@@ -1,7 +1,7 @@
 "use client";
 
 import { images } from "@/lib";
-import { testimonials } from "@/lib/valiable";
+import { testimonials } from "@/lib/variable";
 import Image from "next/image";
 import React from "react";
 
