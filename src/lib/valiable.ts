@@ -1,3 +1,6 @@
+import { images } from ".";
+
+
 export const navItems = [
   { label: "Home", href: "/" },
   { label: "Category", href: "/category" },
@@ -6,78 +9,385 @@ export const navItems = [
 
 export type SubCategory = {
   name: string;
-  img: string;
+  img: any;
 };
 
 export type Category = {
   name: string;
-  img: string;
+  img: any;
   subCategories: SubCategory[];
 };
 
 export const categories: Category[] = [
   {
     name: "Computer Components",
-    img: "computer-components.jpg",
+    img: images.product18,
     subCategories: [
-      { name: "Motherboards", img: "motherboards.jpg" },
-      { name: "Processors", img: "processors.jpg" },
-      { name: "RAM", img: "ram.jpg" },
-      { name: "Storage Devices", img: "storage-devices.jpg" },
+      { name: "Motherboards", img: images.product22 },
+      { name: "Processors", img: images.product21 },
+      { name: "RAM", img: images.product11 },
+      { name: "Storage Devices", img: images.product9 },
     ],
   },
   {
     name: "Laptop and Desktop Parts",
-    img: "laptop-desktop-parts.jpg",
+    img: images.product12,
     subCategories: [
-      { name: "Laptop Screens", img: "laptop-screens.jpg" },
-      { name: "Keyboards", img: "keyboards.jpg" },
-      { name: "Power Supplies", img: "power-supplies.jpg" },
+      { name: "Laptop Screens", img: images.product8 },
+      { name: "Keyboards", img: images.product1 },
+      { name: "Power Supplies", img: images.product13 },
     ],
   },
   {
     name: "Peripheral and Accessories",
-    img: "peripheral-accessories.jpg",
+    img: images.product15,
     subCategories: [
-      { name: "Monitors", img: "monitors.jpg" },
-      { name: "Mouse", img: "mouse.jpg" },
-      { name: "Keyboards", img: "keyboards.jpg" },
+      { name: "Monitors", img: images.product14 },
+      { name: "Mouse", img: images.product15 },
+      { name: "Keyboards", img: images.product16 },
     ],
   },
   {
     name: "Repairing Tools and Kits",
-    img: "repairing-tools-kits.jpg",
+    img: images.product6,
     subCategories: [
-      { name: "Screwdrivers", img: "screwdrivers.jpg" },
-      { name: "Cleaning Tools", img: "cleaning-tools.jpg" },
-      { name: "Thermal Paste", img: "thermal-paste.jpg" },
+      { name: "Screwdrivers", img: images.product20 },
+      { name: "Cleaning Tools", img: images.product19 },
+      { name: "Thermal Paste", img: images.product12 },
     ],
   },
   {
     name: "Gaming Components",
-    img: "gaming-components.jpg",
+    img: images.product22,
     subCategories: [
-      { name: "Graphics Cards", img: "graphics-cards.jpg" },
-      { name: "Gaming Chairs", img: "gaming-chairs.jpg" },
-      { name: "Gaming Keyboards", img: "gaming-keyboards.jpg" },
+      { name: "Graphics Cards", img: images.product22 },
+      { name: "Gaming Chairs", img: images.product22 },
+      { name: "Gaming Keyboards", img: images.product22 },
     ],
   },
   {
     name: "Networking",
-    img: "networking.jpg",
+    img: images.product23,
     subCategories: [
-      { name: "Routers", img: "routers.jpg" },
-      { name: "Network Cables", img: "network-cables.jpg" },
-      { name: "Modems", img: "modems.jpg" },
+      { name: "Routers", img: images.product9 },
+      { name: "Network Cables", img: images.product14 },
+      { name: "Modems", img: images.product16 },
     ],
   },
   {
     name: "Mobile and Computer Accessories",
-    img: "mobile-computer-accessories.jpg",
+    img: images.product21,
     subCategories: [
-      { name: "Phone Cases", img: "phone-cases.jpg" },
-      { name: "Chargers", img: "chargers.jpg" },
-      { name: "USB Cables", img: "usb-cables.jpg" },
+      { name: "Phone Cases", img: images.product17 },
+      { name: "Chargers", img: images.product10 },
+      { name: "USB Cables", img: images.product8 },
     ],
+  },
+];
+
+
+
+export type Product = {
+  id: string;
+  name: string;
+  price: number;
+  img: any;
+  subCategory: string;
+  description: string;
+};
+
+export const products: Product[] = [
+  // Computer Components
+  {
+    id: "comp1",
+    name: "ASUS ROG Motherboard",
+    price: 199.99,
+    img: images.product18,
+    subCategory: "Motherboards",
+    description: "High-performance motherboard for gaming.",
+  },
+  {
+    id: "comp2",
+    name: "Intel Core i9 Processor",
+    price: 499.99,
+    img: images.product18,
+    subCategory: "Processors",
+    description: "Top-of-the-line processor for demanding applications.",
+  },
+  {
+    id: "comp3",
+    name: "Corsair Vengeance RAM",
+    price: 89.99,
+    img: images.product15,
+    subCategory: "RAM",
+    description: "16GB RAM with high speed and performance.",
+  },
+  {
+    id: "comp4",
+    name: "Samsung SSD 1TB",
+    price: 129.99,
+    img: images.product18,
+    subCategory: "Storage Devices",
+    description: "High-speed 1TB SSD for quick data access.",
+  },
+  {
+    id: "comp5",
+    name: "Seagate 2TB HDD",
+    price: 89.99,
+    img: images.product17,
+    subCategory: "Storage Devices",
+    description: "Reliable 2TB hard drive for bulk storage.",
+  },
+
+  // Laptop and Desktop Parts
+  {
+    id: "laptop1",
+    name: "Dell XPS 15 Screen",
+    price: 349.99,
+    img: images.product18,
+    subCategory: "Laptop Screens",
+    description: "High-resolution screen for Dell XPS 15.",
+  },
+  {
+    id: "laptop2",
+    name: "Logitech K120 Keyboard",
+    price: 19.99,
+    img: images.product18,
+    subCategory: "Keyboards",
+    description: "Affordable and durable keyboard for everyday use.",
+  },
+  {
+    id: "laptop3",
+    name: "Corsair RM750 Power Supply",
+    price: 129.99,
+    img: images.product18,
+    subCategory: "Power Supplies",
+    description: "750W power supply with high efficiency.",
+  },
+  {
+    id: "laptop4",
+    name: "HP Pavilion Keyboard",
+    price: 29.99,
+    img: images.product18,
+    subCategory: "Keyboards",
+    description: "Comfortable keyboard for HP Pavilion series.",
+  },
+  {
+    id: "laptop5",
+    name: "MSI MPG A750GF PSU",
+    price: 149.99,
+    img: images.product18,
+    subCategory: "Power Supplies",
+    description: "750W power supply with modular cables.",
+  },
+
+  // Peripheral and Accessories
+  {
+    id: "peripheral1",
+    name: "Dell UltraSharp Monitor",
+    price: 379.99,
+    img: images.product18,
+    subCategory: "Monitors",
+    description: "27-inch monitor with ultra-thin bezels.",
+  },
+  {
+    id: "peripheral2",
+    name: "Razer DeathAdder Mouse",
+    price: 59.99,
+    img: images.product18,
+    subCategory: "Mouse",
+    description: "High-precision gaming mouse with customizable buttons.",
+  },
+  {
+    id: "peripheral3",
+    name: "Corsair K95 RGB Keyboard",
+    price: 199.99,
+    img: images.product18,
+    subCategory: "Keyboards",
+    description: "Mechanical keyboard with customizable RGB lighting.",
+  },
+  {
+    id: "peripheral4",
+    name: "BenQ 24-Inch Monitor",
+    price: 299.99,
+    img: images.product18,
+    subCategory: "Monitors",
+    description: "Full HD monitor with great color accuracy.",
+  },
+  {
+    id: "peripheral5",
+    name: "Logitech G502 Hero",
+    price: 79.99,
+    img: images.product18,
+    subCategory: "Mouse",
+    description: "Gaming mouse with high DPI and customizable weights.",
+  },
+
+  // Repairing Tools and Kits
+  {
+    id: "repair1",
+    name: "iFixit Pro Tech Toolkit",
+    price: 89.99,
+    img: images.product18,
+    subCategory: "Screwdrivers",
+    description: "Complete toolkit for electronics repair.",
+  },
+  {
+    id: "repair2",
+    name: "Compressed Air Duster",
+    price: 12.99,
+    img: images.product18,
+    subCategory: "Cleaning Tools",
+    description: "Canned air for cleaning electronic components.",
+  },
+  {
+    id: "repair3",
+    name: "Arctic Silver Thermal Paste",
+    price: 14.99,
+    img: images.product18,
+    subCategory: "Thermal Paste",
+    description: "High-performance thermal paste for CPUs.",
+  },
+  {
+    id: "repair4",
+    name: "Precision Screwdriver Set",
+    price: 29.99,
+    img: images.product18,
+    subCategory: "Screwdrivers",
+    description: "Set of precision screwdrivers for small electronics.",
+  },
+  {
+    id: "repair5",
+    name: "Microfiber Cleaning Cloth",
+    price: 7.99,
+    img: images.product18,
+    subCategory: "Cleaning Tools",
+    description: "Lint-free cloth for cleaning screens and components.",
+  },
+
+  // Gaming Components
+  {
+    id: "gaming1",
+    name: "NVIDIA GeForce RTX 3080",
+    price: 699.99,
+    img: images.product18,
+    subCategory: "Graphics Cards",
+    description: "High-end graphics card for gaming and rendering.",
+  },
+  {
+    id: "gaming2",
+    name: "Secretlab Titan Gaming Chair",
+    price: 399.99,
+    img: images.product18,
+    subCategory: "Gaming Chairs",
+    description: "Ergonomic gaming chair with premium build quality.",
+  },
+  {
+    id: "gaming3",
+    name: "Corsair K70 RGB Gaming Keyboard",
+    price: 149.99,
+    img: images.product18,
+    subCategory: "Gaming Keyboards",
+    description: "Mechanical keyboard with customizable RGB backlighting.",
+  },
+  {
+    id: "gaming4",
+    name: "Razer BlackWidow V3",
+    price: 129.99,
+    img: images.product18,
+    subCategory: "Gaming Keyboards",
+    description: "Durable mechanical keyboard with Razer Green switches.",
+  },
+  {
+    id: "gaming5",
+    name: "Logitech G Pro X Mouse",
+    price: 89.99,
+    img: images.product18,
+    subCategory: "Mouse",
+    description: "Compact gaming mouse with high-precision sensor.",
+  },
+
+  // Networking
+  {
+    id: "network1",
+    name: "Netgear Nighthawk Router",
+    price: 129.99,
+    img: images.product18,
+    subCategory: "Routers",
+    description: "High-speed router with advanced features.",
+  },
+  {
+    id: "network2",
+    name: "AmazonBasics Ethernet Cable",
+    price: 9.99,
+    img: images.product18,
+    subCategory: "Network Cables",
+    description: "High-speed Ethernet cable for reliable connections.",
+  },
+  {
+    id: "network3",
+    name: "ARRIS SURFboard Modem",
+    price: 149.99,
+    img: images.product18,
+    subCategory: "Modems",
+    description: "Reliable modem with DOCSIS 3.0 technology.",
+  },
+  {
+    id: "network4",
+    name: "TP-Link Archer AX50",
+    price: 179.99,
+    img: images.product18,
+    subCategory: "Routers",
+    description: "Wi-Fi 6 router with high speed and coverage.",
+  },
+  {
+    id: "network5",
+    name: "Mediabridge Ethernet Cable",
+    price: 12.99,
+    img: images.product18,
+    subCategory: "Network Cables",
+    description: "High-speed Ethernet cable with durable build.",
+  },
+
+  // Mobile and Computer Accessories
+  {
+    id: "mobile1",
+    name: "Spigen Tough Armor Case",
+    price: 14.99,
+    img: images.product18,
+    subCategory: "Phone Cases",
+    description: "Durable phone case with dual-layer protection.",
+  },
+  {
+    id: "mobile2",
+    name: "Anker PowerCore Charger",
+    price: 29.99,
+    img: images.product18,
+    subCategory: "Chargers",
+    description: "Portable charger with high-capacity battery.",
+  },
+  {
+    id: "mobile3",
+    name: "AmazonBasics USB Cable",
+    price: 8.99,
+    img: images.product18,
+    subCategory: "USB Cables",
+    description: "Reliable USB cable for data transfer and charging.",
+  },
+  {
+    id: "mobile4",
+    name: "OtterBox Defender Case",
+    price: 49.99,
+    img: images.product18,
+    subCategory: "Phone Cases",
+    description: "Rugged case with multi-layer protection for your phone.",
+  },
+  {
+    id: "mobile5",
+    name: "Belkin Boost Up Charger",
+    price: 39.99,
+    img: "belkin-boost-up-charger.jpg",
+    subCategory: "Chargers",
+    description: "Fast wireless charger with sleek design.",
   },
 ];
