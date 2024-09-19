@@ -1,12 +1,15 @@
 "use client";
 
+
+import { CartContext } from "@/context/context";
 import { navItems } from "@/lib/variable";
 import Link from "next/link";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useContext } from "react";
 import { FaSearch, FaShoppingCart } from "react-icons/fa";
 import { HiOutlineMenuAlt2 } from "react-icons/hi";
 
 const MobileNav = () => {
+  const { quantities } = useContext(CartContext);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const navRef = useRef<HTMLElement>(null); 
 
@@ -59,7 +62,14 @@ const MobileNav = () => {
         <div className="flex items-center gap-3">
           <FaSearch className="text-black2 cursor-pointer" />
 
-          <FaShoppingCart className="text-black2 cursor-pointer" />
+          <div className="relative">
+              <FaShoppingCart className="text-gray-600 cursor-pointer" aria-label="Shopping Cart" />
+              {Object.values(quantities).reduce((a, b) => a + b, 0) > 0 && (
+                <div className="absolute -top-1 -right-1 bg-red-500 text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">
+                  {Object.values(quantities).reduce((a, b) => a + b, 0)}
+                </div>
+              )}
+            </div>
         </div>
       </div>
 
