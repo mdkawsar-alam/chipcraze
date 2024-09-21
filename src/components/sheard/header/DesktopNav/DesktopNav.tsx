@@ -1,13 +1,17 @@
-"use client"
-import React, { useContext } from "react";
+"use client";
+
+import React from "react";
 import Link from "next/link";
 import { FaSearch, FaShoppingCart } from "react-icons/fa";
 import { navItems } from "@/lib/variable";
-import { CartContext } from "@/context/context"; 
+import { useCart } from '@/context/CartContext'; 
 
-const DesktopNav = () => {
-  
-  const { quantities } = useContext(CartContext);
+
+const DesktopNav: React.FC = () => {
+
+
+  const { cartItems } = useCart();
+  const totalQuantities = cartItems.reduce((total, item) => total + item.quantity, 0);
 
   return (
     <nav className="bg-white shadow-md">
@@ -20,7 +24,7 @@ const DesktopNav = () => {
             </Link>
           </div>
 
-          {/* Dynamic Navigation Items */}
+          {/* Navigation Links */}
           <div className="hidden md:flex space-x-6">
             {navItems.map((item, index) => (
               <Link
@@ -30,31 +34,32 @@ const DesktopNav = () => {
                 aria-label={item.label}
               >
                 {item.label}
-                <span
-                  className="absolute left-0 bottom-0 h-0.5 w-full bg-blue-500 transition-transform duration-300 transform scale-x-0 group-hover:scale-x-100"
-                ></span>
+                <span className="absolute left-0 bottom-0 h-0.5 w-full bg-blue-500 transition-transform duration-300 transform scale-x-0 group-hover:scale-x-100"></span>
               </Link>
             ))}
           </div>
 
-          {/* Search, Cart, and Auth Buttons */}
+          {/* Search, Cart, and Auth Links */}
           <div className="flex items-center space-x-4">
-            <FaSearch className=" size-5 text-gray-600 cursor-pointer" aria-label="Search" />
+            {/* Search Icon */}
+            <FaSearch className="text-gray-600 cursor-pointer w-5 h-5" aria-label="Search" />
 
-            {/* Shopping Cart Icon */}
+            {/* Cart Icon with Item Count */}
             <div className="relative">
-              <FaShoppingCart className= "size-6 text-gray-600 cursor-pointer" aria-label="Shopping Cart" />
-              {Object.values(quantities).reduce((a, b) => a + b, 0) > 0 && (
-                <div className="absolute -top-4 -right-4 bg-orange-500 text-gray-700 text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">
-                  {Object.values(quantities).reduce((a, b) => a + b, 0)}
+              <FaShoppingCart className="text-gray-600 cursor-pointer w-6 h-6" aria-label="Shopping Cart" />
+              {totalQuantities > 0 && (
+                <div className="absolute -top-2 -right-2 bg-orange-500 text-gray-700 text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">
+                  {totalQuantities}
                 </div>
               )}
             </div>
 
-            {/* Login and Signup Buttons */}
+            {/* Login  */}
             <Link href="/login" aria-label="Login">
               <div className="text-gray-800 hover:text-blue-600">Login</div>
             </Link>
+
+            {/* Signup Button */}
             <Link href="/signup" aria-label="Signup">
               <div className="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700">
                 Signup
