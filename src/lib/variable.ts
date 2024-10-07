@@ -87,15 +87,17 @@ export const categories: Category[] = [
 
 
 
-export type Product = {
+interface Product {
   id: string;
   name: string;
+  description: string;
   price: number;
-  img: any;
+  image: any; 
+  rating: number;
+  inStock: boolean;
   category: string;
   subCategory: string;
-  description: string;
-};
+}
 
 export const products: Product[] = [
   // Computer Components
@@ -103,28 +105,34 @@ export const products: Product[] = [
     id: "comp1",
     name: "ASUS ROG Motherboard",
     price: 199.99,
-    img: images.product18,
+    image: images.product18,
     category: "Computer Components",
     subCategory: "Motherboards",
     description: "High-performance motherboard for gaming.",
+    rating: 4.7,
+    inStock: true,
   },
   {
     id: "comp2",
     name: "Intel Core i9 Processor",
     price: 499.99,
-    img: images.product18,
+    image: images.product18,
     category: "Computer Components",
     subCategory: "Processors",
     description: "Top-of-the-line processor for demanding applications.",
+    rating: 4.9,
+    inStock: true,
   },
   {
     id: "comp3",
     name: "Corsair Vengeance RAM",
     price: 89.99,
-    img: images.product15,
+    image: images.product15,
     category: "Computer Components",
     subCategory: "RAM",
     description: "16GB RAM with high speed and performance.",
+    rating: 4.8,
+    inStock: true,
   },
 
   // Laptop and Desktop Parts
@@ -132,28 +140,34 @@ export const products: Product[] = [
     id: "laptop1",
     name: "Dell XPS 15 Screen",
     price: 349.99,
-    img: images.product18,
+    image: images.product18,
     category: "Laptop and Desktop Parts",
     subCategory: "Laptop Screens",
     description: "High-resolution screen for Dell XPS 15.",
+    rating: 4.5,
+    inStock: false,
   },
   {
     id: "laptop2",
     name: "Logitech K120 Keyboard",
     price: 19.99,
-    img: images.product18,
+    image: images.product18,
     category: "Laptop and Desktop Parts",
     subCategory: "Keyboards",
     description: "Affordable and durable keyboard for everyday use.",
+    rating: 4.2,
+    inStock: true,
   },
   {
     id: "laptop3",
     name: "Corsair RM750 Power Supply",
     price: 129.99,
-    img: images.product18,
+    image: images.product18,
     category: "Laptop and Desktop Parts",
     subCategory: "Power Supplies",
     description: "750W power supply with high efficiency.",
+    rating: 4.6,
+    inStock: true,
   },
 
   // Peripheral and Accessories
@@ -161,28 +175,34 @@ export const products: Product[] = [
     id: "peripheral1",
     name: "Dell UltraSharp Monitor",
     price: 379.99,
-    img: images.product18,
+    image: images.product18,
     category: "Peripheral and Accessories",
     subCategory: "Monitors",
     description: "27-inch monitor with ultra-thin bezels.",
+    rating: 4.8,
+    inStock: true,
   },
   {
     id: "peripheral2",
     name: "Razer DeathAdder Mouse",
     price: 59.99,
-    img: images.product18,
+    image: images.product18,
     category: "Peripheral and Accessories",
     subCategory: "Mouse",
     description: "High-precision gaming mouse with customizable buttons.",
+    rating: 4.7,
+    inStock: true,
   },
   {
     id: "peripheral3",
     name: "Corsair K95 RGB Keyboard",
     price: 199.99,
-    img: images.product18,
+    image: images.product18,
     category: "Peripheral and Accessories",
     subCategory: "Keyboards",
     description: "Mechanical keyboard with customizable RGB lighting.",
+    rating: 4.9,
+    inStock: false,
   },
 
   // Repairing Tools and Kits
@@ -190,28 +210,34 @@ export const products: Product[] = [
     id: "repair1",
     name: "iFixit Pro Tech Toolkit",
     price: 89.99,
-    img: images.product18,
+    image: images.product18,
     category: "Repairing Tools and Kits",
     subCategory: "Screwdrivers",
     description: "Complete toolkit for electronics repair.",
+    rating: 4.8,
+    inStock: true,
   },
   {
     id: "repair2",
     name: "Compressed Air Duster",
     price: 12.99,
-    img: images.product18,
+    image: images.product18,
     category: "Repairing Tools and Kits",
     subCategory: "Cleaning Tools",
     description: "Canned air for cleaning electronic components.",
+    rating: 4.3,
+    inStock: true,
   },
   {
     id: "repair3",
     name: "Arctic Silver Thermal Paste",
     price: 14.99,
-    img: images.product18,
+    image: images.product18,
     category: "Repairing Tools and Kits",
     subCategory: "Thermal Paste",
     description: "High-performance thermal paste for CPUs.",
+    rating: 4.7,
+    inStock: true,
   },
 
   // Gaming Components
@@ -219,28 +245,34 @@ export const products: Product[] = [
     id: "gaming1",
     name: "NVIDIA GeForce RTX 3080",
     price: 699.99,
-    img: images.product18,
+    image: images.product18,
     category: "Gaming Components",
     subCategory: "Graphics Cards",
     description: "High-end graphics card for gaming and rendering.",
+    rating: 4.9,
+    inStock: true,
   },
   {
     id: "gaming2",
     name: "Secretlab Titan Gaming Chair",
     price: 399.99,
-    img: images.product18,
+    image: images.product18,
     category: "Gaming Components",
     subCategory: "Gaming Chairs",
     description: "Ergonomic gaming chair with premium build quality.",
+    rating: 4.8,
+    inStock: true,
   },
   {
     id: "gaming3",
     name: "Corsair K70 RGB Gaming Keyboard",
     price: 149.99,
-    img: images.product18,
+    image: images.product18,
     category: "Gaming Components",
     subCategory: "Gaming Keyboards",
     description: "Mechanical keyboard with customizable RGB backlighting.",
+    rating: 4.7,
+    inStock: false,
   },
 
   // Networking
@@ -248,28 +280,34 @@ export const products: Product[] = [
     id: "network1",
     name: "Netgear Nighthawk Router",
     price: 129.99,
-    img: images.product18,
+    image: images.product18,
     category: "Networking",
     subCategory: "Routers",
     description: "High-speed router with advanced features.",
+    rating: 4.6,
+    inStock: true,
   },
   {
     id: "network2",
     name: "AmazonBasics Ethernet Cable",
     price: 9.99,
-    img: images.product18,
+    image: images.product18,
     category: "Networking",
     subCategory: "Network Cables",
     description: "High-speed Ethernet cable for reliable connections.",
+    rating: 4.5,
+    inStock: true,
   },
   {
     id: "network3",
     name: "ARRIS SURFboard Modem",
     price: 149.99,
-    img: images.product18,
+    image: images.product18,
     category: "Networking",
     subCategory: "Modems",
     description: "Reliable modem with DOCSIS 3.0 technology.",
+    rating: 4.7,
+    inStock: true,
   },
 
   // Mobile and Computer Accessories
@@ -277,29 +315,14 @@ export const products: Product[] = [
     id: "mobile1",
     name: "Spigen Tough Armor Case",
     price: 14.99,
-    img: images.product18,
+    image: images.product18,
     category: "Mobile and Computer Accessories",
     subCategory: "Phone Cases",
     description: "Durable phone case with dual-layer protection.",
+    rating: 4.4,
+    inStock: true,
   },
-  {
-    id: "mobile2",
-    name: "Anker PowerCore Charger",
-    price: 29.99,
-    img: images.product18,
-    category: "Mobile and Computer Accessories",
-    subCategory: "Chargers",
-    description: "Portable charger with high-capacity battery.",
-  },
-  {
-    id: "mobile3",
-    name: "AmazonBasics USB Cable",
-    price: 8.99,
-    img: images.product18,
-    category: "Mobile and Computer Accessories",
-    subCategory: "USB Cables",
-    description: "Reliable USB cable for data transfer and charging.",
-  },
+ 
 ];
 
 interface Offer {

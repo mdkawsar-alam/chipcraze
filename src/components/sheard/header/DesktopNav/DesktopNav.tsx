@@ -45,6 +45,7 @@ const DesktopNav: React.FC = () => {
             <FaSearch className="text-gray-600 cursor-pointer w-5 h-5" aria-label="Search" />
 
             {/* Cart Icon with Item Count */}
+            <Link href='/cart'>
             <div className="relative">
               <FaShoppingCart className="text-gray-600 cursor-pointer w-6 h-6" aria-label="Shopping Cart" />
               {totalQuantities > 0 && (
@@ -53,6 +54,8 @@ const DesktopNav: React.FC = () => {
                 </div>
               )}
             </div>
+            </Link>
+           
 
             {/* Login  */}
             <Link href="/login" aria-label="Login">
