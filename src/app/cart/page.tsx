@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 import { products } from '@/lib/variable'; // Assuming this is your product list
-import { useCart } from '@/context/CartContext'; // Importing the useCart hook
+import { useCart } from '@/context/CartContext'; 
 
 interface FoodItem {
   _id: string;
@@ -15,7 +15,7 @@ interface FoodItem {
 
 const Cart: React.FC = () => {
   const router = useRouter();
-  const { cartItems, removeFromCart } = useCart(); // Using the cart context
+  const { cartItems, removeFromCart } = useCart(); 
   const [promoCode, setPromoCode] = useState("");
 
   const getTotalCartAmount = () => {

@@ -1,15 +1,14 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import { FaSearch, FaShoppingCart } from "react-icons/fa";
 import { navItems } from "@/lib/variable";
-import { useCart } from '@/context/CartContext'; 
+import { useCart } from '@/context/CartContext';
+import SearchModal from "@/components/modal/search/Search";
 
-
-const DesktopNav: React.FC = () => {
-
-
+const DesktopNav = () => {
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
   const { cartItems } = useCart();
   const totalQuantities = cartItems.reduce((total, item) => total + item.quantity, 0);
 
@@ -42,20 +41,21 @@ const DesktopNav: React.FC = () => {
           {/* Search, Cart, and Auth Links */}
           <div className="flex items-center space-x-4">
             {/* Search Icon */}
-            <FaSearch className="text-gray-600 cursor-pointer w-5 h-5" aria-label="Search" />
+            <button onClick={() => setIsSearchOpen(true)} aria-label="Open search">
+              <FaSearch className="text-gray-600 cursor-pointer w-5 h-5" />
+            </button>
 
             {/* Cart Icon with Item Count */}
             <Link href='/cart'>
-            <div className="relative">
-              <FaShoppingCart className="text-gray-600 cursor-pointer w-6 h-6" aria-label="Shopping Cart" />
-              {totalQuantities > 0 && (
-                <div className="absolute -top-2 -right-2 bg-orange-500 text-gray-700 text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">
-                  {totalQuantities}
-                </div>
-              )}
-            </div>
+              <div className="relative">
+                <FaShoppingCart className="text-gray-600 cursor-pointer w-6 h-6" aria-label="Shopping Cart" />
+                {totalQuantities > 0 && (
+                  <div className="absolute -top-2 -right-2 bg-orange-500 text-gray-700 text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">
+                    {totalQuantities}
+                  </div>
+                )}
+              </div>
             </Link>
-           
 
             {/* Login  */}
             <Link href="/login" aria-label="Login">
@@ -71,6 +71,7 @@ const DesktopNav: React.FC = () => {
           </div>
         </div>
       </div>
+      <SearchModal isOpen={isSearchOpen} onClose={() => setIsSearchOpen(false)} />
     </nav>
   );
 };
