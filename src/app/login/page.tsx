@@ -1,7 +1,7 @@
 'use client'
 
 import { useForm, SubmitHandler } from 'react-hook-form'
-import { useRouter } from 'next/navigation'
+// import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 
 type LoginInputs = {
@@ -11,7 +11,7 @@ type LoginInputs = {
 
  const LoginPage=()=> {
   const { register, handleSubmit, formState: { errors } } = useForm<LoginInputs>()
-  const router = useRouter()
+  // const router = useRouter()
 
   const onSubmit: SubmitHandler<LoginInputs> = async (data) => {
     // TODO: Implement login logic here
@@ -26,7 +26,8 @@ type LoginInputs = {
         <div className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
           <div className="mb-4">
             <h2 className="text-2xl font-bold mb-2">Login</h2>
-            <p className="text-gray-600">Enter your credentials to access your account</p>
+            <p className="text-gray-600">Enter your credentials 
+            to access your account</p>
           </div>
           <form onSubmit={handleSubmit(onSubmit)}>
             <div className="mb-4">
@@ -75,7 +76,7 @@ type LoginInputs = {
           </form>
         </div>
         <p className="text-center text-gray-500 text-xs">
-          Don't have an account?{' '}
+        {`Don't have an account?`}{' '}
           <Link href="/signup" className="text-blue-500 hover:text-blue-800">
             Sign up
           </Link>

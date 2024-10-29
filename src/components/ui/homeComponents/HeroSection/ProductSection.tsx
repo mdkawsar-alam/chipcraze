@@ -7,10 +7,11 @@ import { BiShowAlt } from 'react-icons/bi'
 import { useCart } from '@/context/CartContext'
 import { products } from '@/lib/variable'
 
-interface ProductSectionProps {
-  selectedCategory?: string
-  selectedSubCategory?: string
+export interface ProductSectionProps {
+  selectedCategory?: string | null
+  selectedSubCategory?: string | null
 }
+
 
 export default function ProductSection({
   selectedCategory,
@@ -91,7 +92,7 @@ export default function ProductSection({
             className="border p-4 rounded-lg shadow-md relative"
           >
             <Image
-              src={product.image[0]}
+              src={product.image}
               alt={product.name}
               width={500}
               height={300}

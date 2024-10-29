@@ -3,15 +3,15 @@
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
-import { products } from '@/lib/variable'; // Assuming this is your product list
+import { products } from '@/lib/variable';
 import { useCart } from '@/context/CartContext'; 
 
-interface FoodItem {
-  _id: string;
-  name: string;
-  image: string;
-  price: number;
-}
+// interface FoodItem {
+//   _id: string;
+//   name: string;
+//   image: string;
+//   price: number;
+// }
 
 const Cart: React.FC = () => {
   const router = useRouter();
@@ -30,7 +30,7 @@ const Cart: React.FC = () => {
 
   const handlePromoSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle promo code validation here
+    
   };
 
   return (
@@ -55,7 +55,7 @@ const Cart: React.FC = () => {
                 <div key={product.id} className="mb-4">
                   <div className="cart-items-item grid grid-cols-6 items-center gap-4">
                     <Image
-                      src={product.img}
+                      src={product.image}
                       alt={product.name}
                       width={64}
                       height={64}

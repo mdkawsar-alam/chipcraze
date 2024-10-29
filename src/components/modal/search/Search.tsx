@@ -1,79 +1,87 @@
-import React, { useState, useEffect, useRef } from 'react'
-import { createPortal } from 'react-dom'
-import { XIcon, SearchIcon } from 'lucide-react'
-import { products } from '@/lib/variable'
-import { useRouter } from 'next/navigation'
-
+import React, { useState, useEffect, useRef } from "react";
+import { createPortal } from "react-dom";
+import { XIcon, SearchIcon } from "lucide-react";
+import { products } from "@/lib/variable";
+import { useRouter } from "next/navigation";
 
 interface SearchResult {
-  id: string
-  name: string
-  description: string
+  id: string;
+  name: string;
+  description: string;
 }
 
-export default function SearchModal({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) {
-  const [searchTerm, setSearchTerm] = useState('')
-  const [searchResults, setSearchResults] = useState<SearchResult[]>([])
-  const modalRef = useRef<HTMLDivElement>(null)
+export default function SearchModal({
+  isOpen,
+  onClose,
+}: {
+  isOpen: boolean;
+  onClose: () => void;
+}) {
+  const [searchTerm, setSearchTerm] = useState("");
+  const [searchResults, setSearchResults] = useState<SearchResult[]>([]);
+  const modalRef = useRef<HTMLDivElement>(null);
   const router = useRouter();
 
   useEffect(() => {
     const handleEscape = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') {
-        onClose()
+      if (event.key === "Escape") {
+        onClose();
       }
-    }
+    };
 
-    document.addEventListener('keydown', handleEscape)
-    return () => document.removeEventListener('keydown', handleEscape)
-  }, [onClose])
+    document.addEventListener("keydown", handleEscape);
+    return () => document.removeEventListener("keydown", handleEscape);
+  }, [onClose]);
 
   useEffect(() => {
     if (isOpen) {
-      document.body.style.overflow = 'hidden'
+      document.body.style.overflow = "hidden";
     } else {
-      document.body.style.overflow = 'unset'
+      document.body.style.overflow = "unset";
     }
-  }, [isOpen])
+  }, [isOpen]);
 
   useEffect(() => {
     const performSearch = () => {
-      setSearchResults(products.filter(result => 
-        result.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        result.description.toLowerCase().includes(searchTerm.toLowerCase())
-      ))
-    }
+      setSearchResults(
+        products.filter(
+          (result) =>
+            result.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+            result.description.toLowerCase().includes(searchTerm.toLowerCase())
+        )
+      );
+    };
 
     if (searchTerm) {
       const debounce = setTimeout(() => {
-        performSearch()
-      }, 300)
+        performSearch();
+      }, 300);
 
-      return () => clearTimeout(debounce)
+      return () => clearTimeout(debounce);
     } else {
-      setSearchResults([])
+      setSearchResults([]);
     }
-  }, [searchTerm])
+  }, [searchTerm]);
 
   const handleClickOutside = (event: React.MouseEvent) => {
     if (modalRef.current && !modalRef.current.contains(event.target as Node)) {
-      onClose()
+      onClose();
     }
-  }
+  };
 
   const handleProductClick = (productId: string) => {
-    router.push(`/product/${productId}`)
-    onClose()
-  }
+    router.push(`/product/${productId}`);
+    onClose();
+  };
 
-  if (!isOpen) return null
+  if (!isOpen) return null;
 
   return createPortal(
-    <div 
+    <div
       className="fixed inset-0 bg-black bg-opacity-50 z-50 flex justify-center items-start pt-20"
       onClick={handleClickOutside}
     >
-      <div 
+      <div
         ref={modalRef}
         className="bg-white w-full max-w-2xl rounded-lg shadow-lg"
         role="dialog"
@@ -81,8 +89,10 @@ export default function SearchModal({ isOpen, onClose }: { isOpen: boolean; onCl
         aria-labelledby="search-modal-title"
       >
         <div className="p-4 border-b border-gray-200 flex justify-between items-center">
-          <h2 id="search-modal-title" className="text-xl font-semibold">Search Products</h2>
-          <button 
+          <h2 id="search-modal-title" className="text-xl font-semibold">
+            Search Products
+          </h2>
+          <button
             onClick={onClose}
             className="text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
             aria-label="Close search"
@@ -106,13 +116,17 @@ export default function SearchModal({ isOpen, onClose }: { isOpen: boolean; onCl
             {searchResults.length > 0 ? (
               <ul className="divide-y divide-gray-200">
                 {searchResults.map((result) => (
-                  <li 
-                    key={result.id} 
+                  <li
+                    key={result.id}
                     className="py-4 cursor-pointer hover:bg-gray-100"
                     onClick={() => handleProductClick(result.id)}
                   >
-                    <h3 className="text-lg font-medium text-gray-900">{result.name}</h3>
-                    <p className="mt-1 text-sm text-gray-500">{result.description}</p>
+                    <h3 className="text-lg font-medium text-gray-900">
+                      {result.name}
+                    </h3>
+                    <p className="mt-1 text-sm text-gray-500">
+                      {result.description}
+                    </p>
                   </li>
                 ))}
               </ul>
@@ -124,5 +138,5 @@ export default function SearchModal({ isOpen, onClose }: { isOpen: boolean; onCl
       </div>
     </div>,
     document.body
-  )
+  );
 }

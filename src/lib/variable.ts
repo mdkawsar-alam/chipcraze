@@ -1,29 +1,30 @@
+import { StaticImageData } from "next/image";
 import { images } from ".";
 
 
 export const navItems = [
   { label: "Home", href: "/" },
-  { label: "Category", href: "/category" },
-  { label: "Contract", href: "/contract" },
+  { label: "Products", href: "/product" },
+  { label: "Contact", href: "/contact" },
 ];
 
 export type SubCategory = {
   name: string;
-  img: any;
+  img: StaticImageData;
 };
 
 export type Category = {
   name: string;
-  img: any;
+  img: StaticImageData;
   subCategories: SubCategory[];
 };
 
 export const categories: Category[] = [
   {
     name: "Computer Components",
-    img: images.product18,
+    img: images.product10,
     subCategories: [
-      { name: "Motherboards", img: images.product22 },
+      { name: "Motherboards", img: images.product11 },
       { name: "Processors", img: images.product21 },
       { name: "RAM", img: images.product11 },
       { name: "Storage Devices", img: images.product9 },
@@ -92,7 +93,7 @@ interface Product {
   name: string;
   description: string;
   price: number;
-  image: any; 
+  image: StaticImageData; 
   rating: number;
   inStock: boolean;
   category: string;

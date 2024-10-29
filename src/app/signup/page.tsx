@@ -1,7 +1,7 @@
 'use client'
 
 import { useForm, SubmitHandler } from 'react-hook-form'
-import { useRouter } from 'next/navigation'
+// import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 
 type SignupInputs = {
@@ -13,7 +13,7 @@ type SignupInputs = {
 
  const SignupPage=()=>{
   const { register, handleSubmit, formState: { errors }, watch } = useForm<SignupInputs>()
-  const router = useRouter()
+  // const router = useRouter()
 
   const onSubmit: SubmitHandler<SignupInputs> = async (data) => {
     // TODO: Implement signup logic here

@@ -1,6 +1,6 @@
 'use client'
 
-import Image from 'next/image'
+import Image, { StaticImageData } from 'next/image'
 import { Star, ShoppingCart } from 'lucide-react'
 import Link from 'next/link'
 import { useCart } from '@/context/CartContext'
@@ -10,7 +10,7 @@ interface Product {
   name: string
   description: string
   price: number
-  image: string
+  image: StaticImageData
   rating: number
   inStock: boolean
   category: string
